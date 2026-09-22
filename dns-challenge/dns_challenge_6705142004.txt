@@ -1,0 +1,28 @@
+===BEGIN DNS CHALLENGE SUBMISSION===
+student_id: 6705142004
+assigned_zone: ember.lab
+timestamp: 2026-09-22T04:25:34Z
+---[zone file: /etc/bind/db.ember.lab]---
+$TTL    604800
+@       IN      SOA     ns1.ember.lab. admin.ember.lab. (
+                              2         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      ns1.ember.lab.
+ns1     IN      A       192.168.90.1
+www     IN      A       192.168.90.40
+mail    IN      A       192.168.90.81
+app     IN      A       192.168.90.143
+---[named-checkzone]---
+zone ember.lab/IN: loaded serial 2
+OK
+---[dig @127.0.0.1 www.ember.lab]---
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 32108
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+; EDNS: version: 0, flags:; udp: 1232
+;www.ember.lab.			IN	A
+www.ember.lab.		604800	IN	A	192.168.90.40
+===END DNS CHALLENGE SUBMISSION===
